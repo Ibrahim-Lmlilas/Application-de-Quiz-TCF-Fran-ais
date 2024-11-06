@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 777</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1 >Application de Quiz</h1>
+        <button id="start-btn" class="btn">Démarrer le quiz</button>
+        <div id="quiz" class="hide">
+            <div id="timer">Temps restant: <span id="time">20</span> s</div>
+            <div id="question-container">
+                <div id="question">Question</div>
+                <div id="answer-buttons" class="btn-group"></div>
+            </div>
+            <button id="next-btn" class="btn hide">Suivant</button>
+        </div>
+        <div id="result" class="hide">
+            <p id="score-text"></p>
+            <button id="restart-btn" class="btn">Redémarrer</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

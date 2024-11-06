@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:linear-gradient(90deg, #8e1380 60%, rgb(255, 99, 2) 91%) ;
+    margin: 0;
+}
+
+.quiz-container {
+    background:linear-gradient(90deg, rgb(57, 55, 55) 40%, rgb(232, 164, 223) 91%) ;
+    border-radius: 8px;
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+
+.btn {
+    background:linear-gradient(90deg, #4b0443 5%, #8e1380 50%, rgb(255, 99, 2) 90%) ;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    transform: btn;
+}
+
+.btn :hover{
+
+    border-radius: 20px;
+
+}
+
+.btn-group .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+.correct {
+    background:linear-gradient(90deg, rgb(60, 255, 145) 48%, rgb(2, 255, 188) 91%) ;
+}
+
+.incorrect {
+    background:linear-gradient(90deg, rgb(246, 130, 130) 48%, rgb(255, 11, 11) 91%) ;
+}
