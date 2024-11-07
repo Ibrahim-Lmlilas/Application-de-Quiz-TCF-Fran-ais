@@ -1,24 +1,25 @@
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background:linear-gradient(90deg, #4A55A2 60%, #A0BFE0 91%) ;
+    background: linear-gradient(90deg, #4A55A2 60%, #A0BFE0 91%);
     margin: 0;
 }
 
+/* Quiz container styling */
 .quiz-container {
-    background:#C5DFF8 ;
+    background: #C5DFF8;
     border-radius: 8px;
     width: 400px;
     padding: 20px;
     text-align: center;
 }
 
-
-
-
+/* Button styling */
 .btn {
     background-color: #7895CB;
     padding: 10px;
@@ -31,10 +32,9 @@ body {
     transform: btn;
 }
 
-.btn :hover{
-
+.btn:hover {
     border-radius: 20px;
-
+    background-color: #4A55A2;
 }
 
 .btn-group .btn {
@@ -46,10 +46,62 @@ body {
     display: none;
 }
 
+
 .correct {
-    background:linear-gradient(90deg, rgb(60, 255, 145) 48%, rgb(2, 255, 188) 91%) ;
+    background: linear-gradient(90deg, rgb(60, 255, 145) 48%, rgb(2, 255, 188) 91%);
 }
 
 .incorrect {
-    background:linear-gradient(90deg, rgb(246, 130, 130) 48%, rgb(255, 11, 11) 91%) ;
+    background: linear-gradient(90deg, rgb(246, 130, 130) 48%, rgb(255, 11, 11) 91%);
 }
+
+/* Navbar styling
+.navbar {
+    width: 100%;
+    background-color: #4A55A2;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #A0BFE0;
+}
+
+/* Footer styling */
+/* footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4A55A2;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #A0BFE0;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+} */ 

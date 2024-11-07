@@ -82,7 +82,11 @@ const questions = [
         { text: 'c) éclaire', correct: false },
         { text: 'd) cultive', correct: false }
     ]},
+
+   
+    
 ];
+
 
 
 startButton.addEventListener('click', startQuiz);
@@ -92,6 +96,7 @@ nextButton.addEventListener('click', () => {
 });
 restartButton.addEventListener('click', startQuiz);
 
+// Fonctions principales
 function startQuiz() {
     startButton.classList.add('hide');
     resultContainer.classList.add('hide');
@@ -128,42 +133,40 @@ function resetState() {
     }
 }
 
+// Modification principale : coloration des réponses
 function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct === 'true';
-    if (correct) score++;
+    
+    // Désactiver tous les boutons après la sélection
     Array.from(answerButtonsElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct);
+        button.disabled = true;
     });
+
+    // Mise à jour du score
+    if (correct) {
+        score++;
+        selectedButton.classList.add('correct');
+    } else {
+        selectedButton.classList.add('incorrect');
+    }
+
+    // Mettre en vert la bonne réponse
+    Array.from(answerButtonsElement.children).forEach(button => {
+        if (button.dataset.correct === 'true') {
+            button.classList.add('correct');
+        }
+    });
+    
+    // Gestion des boutons suivants
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide');
     } else {
-        showResult();
+        // Dernier bouton, afficher le résultat
+        setTimeout(showResult, 1000);
     }
+    
     stopTimer();
-}
-
-function showResult() {
-    quizContainer.classList.add('hide');
-    resultContainer.classList.remove('hide');
-    scoreText.innerText = `Votre score est de ${score} sur ${questions.length}`;
-    // Determine level based on score
-    if (score <= 2) scoreText.innerText += ' (Niveau A1)';
-    else if (score == 3) scoreText.innerText += ' (Niveau A2)';
-    else if (score == 4) scoreText.innerText += ' (Niveau A2)';
-    else if (score == 5) scoreText.innerText += ' (Niveau B1)';
-    else if (score == 6) scoreText.innerText += ' (Niveau B1)';
-    else if (score == 7) scoreText.innerText += ' (Niveau B2)';
-    else if (score == 8) scoreText.innerText += ' (Niveau B2)';
-    else if (score == 9) scoreText.innerText += ' (Niveau C1)';
-    else if (score == 10) scoreText.innerText += ' (Niveau C2)';
-    localStorage.setItem('lastScore', score); 
-}
-
-function setStatusClass(element, correct) {
-    clearStatusClass(element);
-    if (correct) element.classList.add('correct');
-    else element.classList.add('incorrect');
 }
 
 function clearStatusClass(element) {
@@ -171,6 +174,26 @@ function clearStatusClass(element) {
     element.classList.remove('incorrect');
 }
 
+function showResult() {
+    quizContainer.classList.add('hide');
+    resultContainer.classList.remove('hide');
+    scoreText.innerText = `Votre score est de ${score} sur ${questions.length}`;
+    
+    // Détermination du niveau
+    let level = 'A1';
+    if (score <= 2) level = 'A1';
+    else if (score <= 4) level = 'A2';
+    else if (score <= 6) level = 'B1';
+    else if (score <= 8) level = 'B2';
+    else if (score === 9) level = 'C1';
+    else if (score === 10) level = 'C2';
+
+    scoreText.innerText += ` (Niveau ${level})`;
+    
+    localStorage.setItem('lastScore', score); 
+}
+
+// Gestion du timer
 function startTimer() {
     timeLeft = 20;
     timerElement.innerText = timeLeft;
@@ -184,16 +207,15 @@ function startTimer() {
     }, 1000);
 }
 
-
-
 function stopTimer() {
     clearInterval(timerInterval);
 }
 
-// Load last score on page load
+// Chargement du dernier score
 window.addEventListener('load', () => {
     const lastScore = localStorage.getItem('lastScore');
     if (lastScore !== null) {
         alert(`Votre dernier score était: ${lastScore}`);
     }
 });
+
