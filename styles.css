@@ -4,12 +4,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background:linear-gradient(90deg, #8e1380 60%, rgb(255, 99, 2) 91%) ;
+    background:linear-gradient(90deg, #4A55A2 60%, #A0BFE0 91%) ;
     margin: 0;
 }
 
 .quiz-container {
-    background:linear-gradient(90deg, rgb(57, 55, 55) 40%, rgb(232, 164, 223) 91%) ;
+    background:#C5DFF8 ;
     border-radius: 8px;
     width: 400px;
     padding: 20px;
@@ -20,11 +20,11 @@ body {
 
 
 .btn {
-    background:linear-gradient(90deg, #4b0443 5%, #8e1380 50%, rgb(255, 99, 2) 90%) ;
-    color: white;
+    background-color: #7895CB;
     padding: 10px;
     border-radius: 10px;
     margin: 5px;
+    color: #000000;
     border: none;
     cursor: pointer;
     transition: 0.5s;

@@ -84,7 +84,7 @@ const questions = [
     ]},
 ];
 
-// Start Quiz
+
 startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
@@ -157,7 +157,7 @@ function showResult() {
     else if (score == 8) scoreText.innerText += ' (Niveau B2)';
     else if (score == 9) scoreText.innerText += ' (Niveau C1)';
     else if (score == 10) scoreText.innerText += ' (Niveau C2)';
-    localStorage.setItem('lastScore', score); // Save score to local storage
+    localStorage.setItem('lastScore', score); 
 }
 
 function setStatusClass(element, correct) {
@@ -183,6 +183,8 @@ function startTimer() {
         }
     }, 1000);
 }
+
+
 
 function stopTimer() {
     clearInterval(timerInterval);
