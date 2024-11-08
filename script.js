@@ -228,9 +228,9 @@ downloadButton.addEventListener('click', function() {
         const correctAnswer = question.answers.find(ans => ans.correct).text;
         const userAnswer = userAnswers[index] || "Non répondu";
 
-        doc.text(`Question ${index + 1}: ${question.question}`, 10, 40 + (index * 20));
-        doc.text(`Votre réponse: ${userAnswer}`, 10, 50 + (index * 20));
-        doc.text(`Réponse correcte: ${correctAnswer}`, 10, 60 + (index * 20));
+        doc.text(`Question ${index + 1}: ${question.question}`, 5, 45 + (index * 20));
+        doc.text(`Votre réponse: ${userAnswer}`, 5, 50 + (index * 20));
+        doc.text(`Réponse correcte: ${correctAnswer}`, 5, 55 + (index * 20));
     });
 
     // Sauvegarder le PDF
