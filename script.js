@@ -93,6 +93,7 @@ startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
     setNextQuestion();
+
 });
 restartButton.addEventListener('click', startQuiz);
 
@@ -122,6 +123,8 @@ function showQuestion(question) {
         if (answer.correct) button.dataset.correct = answer.correct;
         button.addEventListener('click', selectAnswer);
         answerButtonsElement.appendChild(button);
+
+
     });
 }
 
@@ -190,8 +193,12 @@ function showResult() {
 
     scoreText.innerText += ` (Niveau ${level})`;
     
-    localStorage.setItem('lastScore', score); 
+    localStorage.setItem('last Score', score);
+    localStorage.setItem('last level',level);
+
 }
+
+
 
 // Gestion du timer
 function startTimer() {
@@ -217,5 +224,40 @@ window.addEventListener('load', () => {
     if (lastScore !== null) {
         alert(`Votre dernier score était: ${lastScore}`);
     }
+    
+
+
 });
 
+document.getElementById('download-btn').addEventListener('click', function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Ajoutez le contenu du PDF
+    doc.text("Rapport de Quiz", 10, 10);
+    doc.text("Score total: " + totalScore, 10, 20);
+    doc.text("Niveau atteint: " + levelAchieved, 10, 30);
+
+    questions.forEach((question, index) => {
+        doc.text(`Question ${index + 1}: ${question.text}`, 10, 40 + (index * 20));
+        doc.text(`Votre réponse: ${userAnswers[index]}`, 10, 50 + (index * 20));
+        doc.text(`Réponse correcte: ${correctAnswers[index]}`, 10, 60 + (index * 20));
+    });
+
+    // Sauvegarder le PDF
+    doc.save("rapport_quiz.pdf");
+});
+
+
+
+
+function endQuiz() {
+    // Calculer le score et le niveau
+    calculateScore();
+    
+    // Afficher le résultat
+    document.getElementById('result').classList.remove('hide');
+    
+    // Afficher le bouton de téléchargement
+    document.getElementById('download-btn').classList.remove('hide');
+}
